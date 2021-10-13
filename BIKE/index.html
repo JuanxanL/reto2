@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/bootstrap.min.css" >
+    <title>Document</title>
+</head>
+<body>
+  <header class="card-header">
+    <div class="container">
+      <div class="row justify-content-md-center">
+          <ul class="nav ">
+              <li class="nav-item col-3 col-sm-3 col-md-3 col-lg-3 col-xl-3">
+                  <a class="nav-link active" href="#">
+                      <img src="IMG/logoBike.png" alt="">
+                  </a>    
+                </li>
+              <li class="nav-item col-3 col-sm-3 col-md-3 col-lg-3 col-xl-3">
+                <a class="nav-link" href="#" onclick="menu('bike')">BIKE</a>
+              </li>
+              <li class="nav-item col-3 col-sm-3 col-md-3 col-lg-3 col-xl-3">
+                <a class="nav-link" href="#" onclick="menu('user')">USER</a>
+              </li>
+              <li class="nav-item col-3 col-sm-3 col-md-3 col-lg-3 col-xl-3">
+                <a class="nav-link" href="#" onclick="menu('message')">MESSAGE</a>
+              </li>
+            </ul>
+      </div>
+  </div>
+</header>
+
+
+ <div class="container">
+    <section>
+        <div class="row">
+
+<!-- --------------------------------------- Inicio Tabla BIKE --------------------------------------->
+<div class="bike-form col-12 col-sm-12	col-md-12 col-lg-12	col-xl-12" id="bike-form">
+          <h1 class="text-center">BIKE</h1>
+            <button class="btn btn-primary" onclick="consultar()">Consultar</button>
+            <div id="idDivConsulta" class="col-12 col-sm-12	col-md-12 col-lg-12	col-xl-12">
+
+            </div>
+<!------------------------- Final Tabla BIKE --------------------------------->
+<!------------------------- Inicio Formulario de agregar --------------------->
+            <div id="form" class="col-12 col-sm-12	col-md-12 col-lg-12	col-xl-12">
+                <div class="form-row">
+                    <div class="form-group col-6 col-sm-6 col-md-6 col-lg-6	col-xl-6">
+                        <label>BRAND</label>
+                        <input type="text" class="form-control" id="brand" name="brand" placeholder="Enter brand">
+                        <small class="form-text text-muted">Digite la marca de la bicicleta</small>
+                      </div>
+                      <div class="form-group col-6 col-sm-6 col-md-6 col-lg-6	col-xl-6">
+                        <label>MODEL</label>
+                        <input type="number" class="form-control" id="model" name="model" placeholder="Enter model">
+                        <small class="form-text text-muted">Digite la model de la bicicleta</small>
+                      </div>
+                      <div class="form-group col-6 col-sm-6 col-md-6 col-lg-6	col-xl-6">
+                        <label>CATEGORY</label>
+                        <input type="number" class="form-control" id="category_id" name="category_id" placeholder="Enter categoria">
+                        <small class="form-text text-muted">Digite la marca de la categoria</small>
+                      </div>
+                      <div class="form-group col-6 col-sm-6 col-md-6 col-lg-6	col-xl-6">
+                        <label>NAME</label>
+                        <input type="text" class="form-control" id="name" name="name" placeholder="Enter name">
+                        <small class="form-text text-muted">Digite el nombre de la bicicleta</small>
+                      </div>
+                      <button onclick="agregarElementos()" class="btn btn-primary justify-content-between">Enviar</button>
+                </div>
+            </div>
+<!------------------- final Formulario de agregar --------------------------------->
+<!-------------------- inicio Formulario de Actualizar bike ---------------------------->
+ <!-- Modal -->
+ <div class="modal fade" id="modalBike" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Actualizar Bike</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div id="form" class="col-12 col-sm-12	col-md-12 col-lg-12	col-xl-12">
+          <div class="form-row">
+            <div class="form-group col-12 col-sm-12 col-md-12 col-lg-12	col-xl-12">
+              <label>ID</label>
+              <input type="number" class="form-control" id="id_update" name="id_update" placeholder="Enter id">
+              <small class="form-text text-muted">Digite el id</small>
+            </div>
+              <div class="form-group col-6 col-sm-6 col-md-6 col-lg-6	col-xl-6">
+                  <label>BRAND</label>
+                  <input type="text" class="form-control" id="brand_update" name="brand" placeholder="Enter brand">
+                  <small class="form-text text-muted">Digite la marca de la bicicleta</small>
+                </div>
+                <div class="form-group col-6 col-sm-6 col-md-6 col-lg-6	col-xl-6">
+                  <label>MODEL</label>
+                  <input type="number" class="form-control" id="model_update" name="model" placeholder="Enter model">
+                  <small class="form-text text-muted">Digite la model de la bicicleta</small>
+                </div>
+                <div class="form-group col-6 col-sm-6 col-md-6 col-lg-6	col-xl-6">
+                  <label>CATEGORY</label>
+                  <input type="number" class="form-control" id="category_id_update" name="category_id" placeholder="Enter categoria">
+                  <small class="form-text text-muted">Digite la marca de la categoria</small>
+                </div>
+                <div class="form-group col-6 col-sm-6 col-md-6 col-lg-6	col-xl-6">
+                  <label>NAME</label>
+                  <input type="text" class="form-control" id="name_update" name="name" placeholder="Enter name">
+                  <small class="form-text text-muted">Digite el nombre de la bicicleta</small>
+                </div>
+          </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" onclick="actualizar()" class="btn btn-success">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+<!-- Modal -->
+<!--------------- final Formulario de Actualizar ---------------->
+</div>
+<!------------------------------------------------------------FINAL DE BIKE------------------------------------------------>
+
+
+
+<!------------------------------------------------------------inicio DE usuario-------------------------------------------->
+<!----------------inicio DE usuario consultar------------------------>
+<div class="usuario-form d-none col-12 col-sm-12	col-md-12 col-lg-12	col-xl-12" id="usuario-form">
+  <h1 class="text-center">Usuario</h1>
+<button class="btn btn-primary" onclick="consultarElementosUsuario()">Consultar</button>
+            <div id="idDivConsultaUsuario" class="col-12 col-sm-12	col-md-12 col-lg-12	col-xl-12">
+
+            </div>
+<!-----------------final DE usuario consultar------------------------>
+<!--------------------inicio DE usuario agregar---------------------->
+<div id="form" class="col-12 col-sm-12	col-md-12 col-lg-12	col-xl-12">
+  <div class="form-row">
+      <div class="form-group col-6 col-sm-6 col-md-6 col-lg-6	col-xl-6">
+        <label>ID</label>
+        <input type="text" class="form-control" id="id_usuario" name="id" placeholder="Enter id">
+        <small class="form-text text-muted">Digite el id</small>
+      </div>
+      <div class="form-group col-6 col-sm-6 col-md-6 col-lg-6	col-xl-6">
+          <label>NAME</label>
+          <input type="text" class="form-control" id="name_usuario" name="name" placeholder="Enter name">
+          <small class="form-text text-muted">Digite el nombre</small>
+        </div>
+        <div class="form-group col-6 col-sm-6 col-md-6 col-lg-6	col-xl-6">
+          <label>EMAIL</label>
+          <input type="email" class="form-control" id="email_usuario" name="email" placeholder="Enter email">
+          <small class="form-text text-muted">Digite el email</small>
+        </div>
+        <div class="form-group col-6 col-sm-6 col-md-6 col-lg-6	col-xl-6">
+          <label>AGE</label>
+          <input type="number" class="form-control" id="age_usuario" name="age" placeholder="Enter age">
+          <small class="form-text text-muted">Digite la edad</small>
+        </div>
+        <button onclick="agregarElementosUsuario()" class="btn btn-primary justify-content-between">Enviar</button>
+  </div>
+</div>
+ <!------------------final DE usuario agregar------------------------->
+ <!-----------------inicio DE usuario actualiza----------------------->
+ <!-- Modal -->
+ <div class="modal fade" id="modalUser" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Actualizar User</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div id="form" class="col-12 col-sm-12	col-md-12 col-lg-12	col-xl-12">
+          <div class="form-row">
+            <div class="form-group col-6 col-sm-6 col-md-6 col-lg-6	col-xl-6">
+              <label>ID</label>
+              <input type="text" class="form-control" id="id_usuario_update" name="id" placeholder="Enter id">
+              <small class="form-text text-muted">Digite el id</small>
+            </div>
+              <div class="form-group col-6 col-sm-6 col-md-6 col-lg-6	col-xl-6">
+                  <label>NAME</label>
+                  <input type="text" class="form-control" id="name_usuario_update" name="name" placeholder="Enter name">
+                  <small class="form-text text-muted">Digite el nombre</small>
+                </div>
+                <div class="form-group col-6 col-sm-6 col-md-6 col-lg-6	col-xl-6">
+                  <label>EMAIL</label>
+                  <input type="email" class="form-control" id="email_usuario_update" name="email" placeholder="Enter email">
+                  <small class="form-text text-muted">Digite el email</small>
+                </div>
+                <div class="form-group col-6 col-sm-6 col-md-6 col-lg-6	col-xl-6">
+                  <label>AGE</label>
+                  <input type="number" class="form-control" id="age_usuario_update" name="age" placeholder="Enter age">
+                  <small class="form-text text-muted">Digite la edad</small>
+                </div>
+          </div>
+        </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" onclick="actualizarElementosUsuario()" class="btn btn-success">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+<!-- Modal -->
+<!------------final DE usuario actualizar--------------->
+</div>
+<!------------------------------------------------------------final DE usuario--------------------------------------------->
+
+
+
+<!------------------------------------------------------------INICIO DE MESSAGE-------------------------------------------->
+<!----------------inicio DE MESSAGE consultar------------------------>
+<div class="message-form d-none col-12 col-sm-12	col-md-12 col-lg-12	col-xl-12" id="message-form">
+  <h1 class="text-center">Message</h1>
+<button class="btn btn-primary" onclick="consultarElementosMensaje()">Consultar</button>
+            <div id="idDivConsultaMensaje" class="col-12 col-sm-12	col-md-12 col-lg-12	col-xl-12">
+
+            </div>
+<!-----------------final DE MESSAGE consultar------------------------>
+<!--------------------inicio DE MESSAGE agregar---------------------->
+<div id="form" class="col-12 col-sm-12	col-md-12 col-lg-12	col-xl-12">
+  <div class="form-row">
+    <div class="form-group col-12 col-sm-12 col-md-12 col-lg-12	col-xl-12">
+      <label>ID</label>
+      <input type="text" class="form-control" id="id_mensaje" name="id" placeholder="Enter messagetext">
+      <small class="form-text text-muted">Digite el messagetext</small>
+    </div>
+      <div class="form-group col-12 col-sm-12 col-md-12 col-lg-12	col-xl-12">
+          <label>MESSAGETEXT</label>
+          <input type="text" class="form-control" id="messagetext" name="messagetext" placeholder="Escriba su mensaje aqui">
+          <small class="form-text text-muted">Digite el messagetext</small>
+        </div>
+        <button onclick="agregarElementosMensaje()" class="btn btn-primary justify-content-between">Enviar</button>
+  </div>
+</div>
+ <!------------------final DE MESSAGE agregar----------------------- -->
+ <!-- ------------------inicio DE MESSAGE actualizar------------------->
+<!-- Modal -->
+<div class="modal fade" id="modalMensaje" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Actualizar User</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div id="form" class="col-12 col-sm-12	col-md-12 col-lg-12	col-xl-12">
+          <div class="form-row">
+            <div class="form-group col-12 col-sm-12 col-md-12 col-lg-12	col-xl-12">
+              <label>ID</label>
+              <input type="number" class="form-control" id="id_mensaje_update" name="id" placeholder="Enter messagetext">
+              <small class="form-text text-muted">Digite el messagetext</small>
+            </div>
+              <div class="form-group col-12 col-sm-12 col-md-12 col-lg-12	col-xl-12">
+                  <label>MESSAGETEXT</label>
+                  <input type="text" class="form-control" id="menssajetext_update" name="menssajetext_update" placeholder="Escriba su mensaje aqui">
+                  <small class="form-text text-muted">Digite el messagetext</small>
+                </div>
+          </div>
+        </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" onclick="actualizarElementosMensaje()" class="btn btn-success">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+<!-- Modal -->
+ <!------------------final DE MESSAGE actualizar---------------------->
+</div>
+<!------------------------------------------------------------final DE MESSAGE--------------------------------------------->
+</div>
+</section>
+</div>
+
+    <script  src="JS/main.js">  </script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </body>
+</html>
